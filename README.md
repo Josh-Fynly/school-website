@@ -73,7 +73,7 @@ Contact
 Banner of Excellence Schools
  08035732076 | 08029168211
 ✉️ banner@excellenceschools.com
- No. 12 Udo Ebi / Inyang Efie Street, Eket Item II, Ilu L.C.A
+ No. 12 Udo Ebu / Inyang Effe Street, Ekit Itam II, Itu L.G.A
 License
 MIT License - feel free to use for your projects
 Built with ❤️ by Josh Fynly
