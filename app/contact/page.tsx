@@ -14,6 +14,9 @@ export default function Contact() {
     message: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
@@ -23,19 +26,37 @@ export default function Contact() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // This will be connected to a backend later
-    console.log("Form submitted:", formData);
-    alert("Thank you! We'll contact you soon.");
-    setFormData({
-      parentName: "",
-      childName: "",
-      email: "",
-      phone: "",
-      program: "nursery",
-      message: "",
-    });
+    setIsSubmitting(true);
+    
+    try {
+      // Validate form
+      if (!formData.parentName || !formData.childName || !formData.email || !formData.phone) {
+        setSubmitMessage("Please fill in all required fields.");
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Log form data (for now, in production connect to backend)
+      console.log("Form submitted:", formData);
+      
+      setSubmitMessage("Thank you! We'll contact you soon.");
+      setFormData({
+        parentName: "",
+        childName: "",
+        email: "",
+        phone: "",
+        program: "nursery",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setSubmitMessage("An error occurred. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitMessage(""), 5000);
+    }
   };
 
   return (
@@ -80,13 +101,19 @@ export default function Contact() {
 
             {/* Enrollment Form */}
             <form onSubmit={handleSubmit} className="space-y-4">
+              {submitMessage && (
+                <div className={`p-4 rounded-lg ${submitMessage.includes("error") || submitMessage.includes("required") ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"}`}>
+                  {submitMessage}
+                </div>
+              )}
+
               <input
                 type="text"
                 name="parentName"
                 placeholder="Parent's Name"
                 value={formData.parentName}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#D81B60]"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#D81B60] transition"
                 required
               />
 
@@ -96,7 +123,7 @@ export default function Contact() {
                 placeholder="Child's Name"
                 value={formData.childName}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#D81B60]"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#D81B60] transition"
                 required
               />
 
@@ -106,7 +133,7 @@ export default function Contact() {
                 placeholder="Email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#D81B60]"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#D81B60] transition"
                 required
               />
 
@@ -116,7 +143,7 @@ export default function Contact() {
                 placeholder="Phone Number"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#D81B60]"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#D81B60] transition"
                 required
               />
 
@@ -124,7 +151,7 @@ export default function Contact() {
                 name="program"
                 value={formData.program}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#D81B60]"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#D81B60] transition"
               >
                 <option value="creche">Crèche (0-2 years)</option>
                 <option value="nursery">Nursery (2-4 years)</option>
@@ -137,14 +164,15 @@ export default function Contact() {
                 value={formData.message}
                 onChange={handleChange}
                 rows={4}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#D81B60]"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#D81B60] transition"
               />
 
               <button
                 type="submit"
-                className="w-full bg-[#D81B60] text-white py-3 rounded-lg font-semibold hover:bg-[#1a3a5c] transition"
+                disabled={isSubmitting}
+                className="w-full bg-[#D81B60] text-white py-3 rounded-lg font-semibold hover:bg-[#1a3a5c] transition disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send Inquiry
+                {isSubmitting ? "Sending..." : "Send Inquiry"}
               </button>
             </form>
           </div>
@@ -154,4 +182,4 @@ export default function Contact() {
       <Footer />
     </>
   );
-              }
+}
