@@ -1,101 +1,128 @@
 import Link from "next/link";
+import Container from "@/components/Container";
+import Section from "@/components/Section";
+import Animated from "@/components/Animated";
 
 export default function Home() {
   return (
     <>
-      {/* Hero */}
-      <section className="py-32 px-4 text-center max-w-4xl mx-auto">
-        <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
-          <span className="text-[#D81B60]">Excellence</span> starts here
-        </h1>
+      {/* HERO */}
+      <Section>
+        <Container>
+          <div className="text-center max-w-3xl mx-auto">
+            <Animated>
+              <h1 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">
+                <span className="text-[#D81B60]">Excellence</span> starts here
+              </h1>
+            </Animated>
 
-        <p className="text-lg md:text-xl text-gray-600 font-light mb-10 leading-relaxed">
-          Quality early childhood education that nurtures every child's
-          potential—from Crèche to Primary.
-        </p>
+            <Animated delay={0.2}>
+              <p className="text-lg md:text-xl text-gray-600 font-light leading-relaxed mb-10">
+                A nurturing environment where children grow, explore,
+                and build strong foundations for life.
+              </p>
+            </Animated>
 
-        <Link
-          href="/contact"
-          className="bg-[#D81B60] text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-[#1a3a5c]"
-        >
-          Enroll Your Child
-        </Link>
-      </section>
+            <Animated delay={0.4}>
+              <Link
+                href="/contact"
+                className="bg-[#D81B60] text-white px-8 py-4 rounded-xl text-lg font-medium hover:scale-105 inline-block"
+              >
+                Enroll Your Child
+              </Link>
+            </Animated>
+          </div>
+        </Container>
+      </Section>
 
-      {/* Programs */}
-      <section className="bg-gray-50 py-24 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
-            Our Programs
-          </h2>
+      {/* PROGRAMS */}
+      <Section className="bg-gray-50">
+        <Container>
+          <Animated>
+            <h2 className="text-4xl md:text-5xl font-semibold text-center mb-4">
+              Programs designed for growth
+            </h2>
+          </Animated>
 
-          <p className="text-center text-gray-600 mb-16 font-light">
-            Designed for every stage of early childhood development
-          </p>
+          <Animated delay={0.2}>
+            <p className="text-center text-gray-600 mb-16">
+              Every stage carefully structured for development
+            </p>
+          </Animated>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 title: "Crèche",
-                desc: "Ages 0–2. Safe, nurturing care for early development.",
+                desc: "Safe, nurturing care for infants and toddlers.",
               },
               {
                 title: "Nursery",
-                desc: "Ages 2–4. Play-based learning and social growth.",
+                desc: "Play-based learning and early development.",
               },
               {
                 title: "Primary",
-                desc: "Ages 4–12. Strong academic and character foundation.",
+                desc: "Strong academic and character foundation.",
               },
-            ].map((p, i) => (
-              <div
-                key={i}
-                className="bg-white p-8 rounded-2xl shadow-sm"
-              >
-                <h3 className="text-xl font-bold mb-3">{p.title}</h3>
-                <p className="text-gray-600 text-sm">{p.desc}</p>
-              </div>
+            ].map((item, i) => (
+              <Animated key={i} delay={i * 0.2}>
+                <div className="bg-white p-8 rounded-2xl hover:shadow-md transition">
+                  <h3 className="text-xl font-semibold mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    {item.desc}
+                  </p>
+                </div>
+              </Animated>
             ))}
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      {/* Why Choose */}
-      <section className="py-24 px-4 max-w-4xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-          Why choose us?
-        </h2>
+      {/* WHY */}
+      <Section>
+        <Container>
+          <Animated>
+            <h2 className="text-4xl md:text-5xl font-semibold text-center mb-16">
+              Why parents choose us
+            </h2>
+          </Animated>
 
-        <div className="space-y-10 text-gray-600">
-          <p>
-            ✔ Safe environment with trained staff and secure facilities
-          </p>
-          <p>
-            ✔ Qualified educators focused on individual development
-          </p>
-          <p>
-            ✔ Holistic learning — academic, emotional, social growth
-          </p>
-          <p>
-            ✔ Modern curriculum for a changing world
-          </p>
-        </div>
-      </section>
+          <div className="grid md:grid-cols-2 gap-10 text-gray-600">
+            {[
+              "Safe and secure environment",
+              "Qualified and caring teachers",
+              "Holistic child development",
+              "Modern teaching approach",
+            ].map((text, i) => (
+              <Animated key={i} delay={i * 0.2}>
+                <p className="text-lg">✓ {text}</p>
+              </Animated>
+            ))}
+          </div>
+        </Container>
+      </Section>
 
       {/* CTA */}
-      <section className="bg-[#D81B60] text-white text-center py-24 px-4">
-        <h2 className="text-4xl font-bold mb-6">Ready to enroll?</h2>
-        <p className="mb-8 font-light">
-          Join a culture of excellence today.
-        </p>
+      <Section className="bg-[#D81B60] text-white text-center">
+        <Container>
+          <Animated>
+            <h2 className="text-4xl font-semibold mb-6">
+              Give your child the best start
+            </h2>
+          </Animated>
 
-        <Link
-          href="/contact"
-          className="bg-white text-[#D81B60] px-8 py-4 rounded-xl font-semibold"
-        >
-          Get Started
-        </Link>
-      </section>
+          <Animated delay={0.2}>
+            <Link
+              href="/contact"
+              className="bg-white text-[#D81B60] px-8 py-4 rounded-xl font-medium hover:scale-105 inline-block"
+            >
+              Start Enrollment
+            </Link>
+          </Animated>
+        </Container>
+      </Section>
     </>
   );
 }
