@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Banner Of Excellence Schools",
+  title: "Banner of Excellence Schools",
   description:
-    "Replenishing A Culture Of Excellence For A Brighter Future.",
+    "Quality Early Childhood Education - Crèche, Nursery, Primary",
 };
 
 export default function RootLayout({
