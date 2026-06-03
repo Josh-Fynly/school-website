@@ -1,22 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
-
-export default function Animated({
-  children,
-  delay = 0,
-}: {
-  children: React.ReactNode;
-  delay?: number;
-}) {
+export default function Animated({ children }: { children: React.ReactNode }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay }}
-      viewport={{ once: true }}
-    >
+    <div className="transition-all duration-500 opacity-100">
       {children}
-    </motion.div>
+    </div>
   );
 }
