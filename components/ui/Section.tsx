@@ -1,12 +1,14 @@
+import { design } from "@/lib/design";
+
 export default function Section({
   children,
-  className = ""
+  className = "",
 }: {
   children: React.ReactNode;
   className?: string;
 }) {
   return (
-    <section className={`py-20 ${className}`}>
+    <section className={`${design.section.paddingY} ${className}`}>
       {children}
     </section>
   );
