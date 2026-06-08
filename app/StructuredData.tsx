@@ -4,6 +4,7 @@ export default function StructuredData() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "School",
+
     name: siteConfig.name,
     description: siteConfig.description,
     url: siteConfig.url,
@@ -17,7 +18,7 @@ export default function StructuredData() {
     contactPoint: [
       {
         "@type": "ContactPoint",
-        telephone: siteConfig.phone,
+        telephone: siteConfig.phone[0],
         contactType: "Admissions",
         email: siteConfig.email,
         areaServed: "NG",
