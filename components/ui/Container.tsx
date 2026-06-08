@@ -1,11 +1,9 @@
+import { design } from "@/lib/design";
+
 export default function Container({
-  children
+  children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <div className="max-w-6xl mx-auto px-4">
-      {children}
-    </div>
-  );
+  return <div className={design.container.width}>{children}</div>;
 }
