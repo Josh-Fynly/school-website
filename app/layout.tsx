@@ -23,6 +23,14 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     url: siteConfig.url,
     siteName: siteConfig.name,
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
     locale: "en_NG",
     type: "website",
   },
@@ -31,6 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
+    images: ["/opengraph-image"],
   },
 
   robots: {
@@ -47,7 +56,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-white text-gray-900 antialiased">
-        {/* Structured SEO Data */}
+        {/* Structured Data (SEO JSON-LD) */}
         <StructuredData />
 
         {/* Global Layout */}
