@@ -1,6 +1,4 @@
 import Link from "next/link";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
 import { school } from "@/lib/school";
@@ -8,8 +6,6 @@ import { school } from "@/lib/school";
 export default function Home() {
   return (
     <>
-      <Navbar />
-
       {/* HERO */}
       <Section>
         <Container>
@@ -41,9 +37,17 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {school.programs.map((p, i) => (
-              <div key={i} className="bg-white p-6 rounded-xl">
-                <h3 className="text-xl font-semibold">{p.title}</h3>
-                <p className="text-gray-600 text-sm mt-2">{p.desc}</p>
+              <div
+                key={i}
+                className="bg-white p-6 rounded-xl shadow-sm"
+              >
+                <h3 className="text-xl font-semibold">
+                  {p.title}
+                </h3>
+
+                <p className="text-gray-600 text-sm mt-2">
+                  {p.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -59,7 +63,10 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 gap-6">
             {school.features.map((f, i) => (
-              <p key={i} className="text-gray-600">
+              <p
+                key={i}
+                className="text-gray-600 text-lg"
+              >
                 ✓ {f}
               </p>
             ))}
@@ -76,14 +83,12 @@ export default function Home() {
 
           <Link
             href="/contact"
-            className="bg-white text-[#D81B60] px-8 py-4 rounded-xl"
+            className="bg-white text-[#D81B60] px-8 py-4 rounded-xl inline-block"
           >
             Start Enrollment
           </Link>
         </Container>
       </Section>
-
-      <Footer />
     </>
   );
 }
