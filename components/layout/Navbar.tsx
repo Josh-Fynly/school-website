@@ -1,109 +1,64 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
+import Link from "next/link";
 import { school } from "@/lib/school";
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/95 backdrop-blur">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-16">
+    <header className="w-full border-b bg-white relative z-50">
+      <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+        {/* Brand */}
+        <Link
+          href="/"
+          className="text-lg sm:text-xl font-semibold tracking-tight leading-tight max-w-[70%]"
+        >
+          {school?.name ?? "Banner Of Excellence"}
+        </Link>
 
-          {/* Logo */}
-          <Link
-            href="/"
-            className="max-w-[70%] sm:max-w-none"
-          >
-            <h1 className="text-sm sm:text-base md:text-lg font-semibold tracking-tight leading-tight text-gray-900">
-              {school?.name || "Banner Of Excellence Schools"}
-            </h1>
-          </Link>
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex gap-6 text-sm font-medium text-gray-700">
+          <Link href="/">Home</Link>
+          <Link href="/about">About</Link>
+          <Link href="/programs">Programs</Link>
+          <Link href="/gallery">Gallery</Link>
+          <Link href="/contact">Contact</Link>
+        </nav>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700">
-            <Link href="/" className="hover:text-black transition-colors">
-              Home
-            </Link>
-
-            <Link href="/about" className="hover:text-black transition-colors">
-              About
-            </Link>
-
-            <Link href="/programs" className="hover:text-black transition-colors">
-              Programs
-            </Link>
-
-            <Link href="/gallery" className="hover:text-black transition-colors">
-              Gallery
-            </Link>
-
-            <Link href="/contact" className="hover:text-black transition-colors">
-              Contact
-            </Link>
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg border border-gray-200"
-            aria-label="Toggle Menu"
-          >
-            <span className="text-2xl leading-none">
-              {menuOpen ? "×" : "☰"}
-            </span>
-          </button>
-        </div>
-
-        {/* Mobile Navigation */}
-        {menuOpen && (
-          <div className="md:hidden border-t border-gray-100 py-4">
-            <nav className="flex flex-col gap-4 text-sm font-medium text-gray-700">
-              <Link
-                href="/"
-                onClick={() => setMenuOpen(false)}
-                className="hover:text-black transition-colors"
-              >
-                Home
-              </Link>
-
-              <Link
-                href="/about"
-                onClick={() => setMenuOpen(false)}
-                className="hover:text-black transition-colors"
-              >
-                About
-              </Link>
-
-              <Link
-                href="/programs"
-                onClick={() => setMenuOpen(false)}
-                className="hover:text-black transition-colors"
-              >
-                Programs
-              </Link>
-
-              <Link
-                href="/gallery"
-                onClick={() => setMenuOpen(false)}
-                className="hover:text-black transition-colors"
-              >
-                Gallery
-              </Link>
-
-              <Link
-                href="/contact"
-                onClick={() => setMenuOpen(false)}
-                className="hover:text-black transition-colors"
-              >
-                Contact
-              </Link>
-            </nav>
-          </div>
-        )}
+        {/* Mobile Button */}
+        <button
+          className="md:hidden flex flex-col gap-1"
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle Menu"
+        >
+          <span className="w-6 h-0.5 bg-gray-800"></span>
+          <span className="w-6 h-0.5 bg-gray-800"></span>
+          <span className="w-6 h-0.5 bg-gray-800"></span>
+        </button>
       </div>
+
+      {/* Mobile Menu */}
+      {open && (
+        <div className="md:hidden border-t bg-white px-6 py-4 space-y-4">
+          <Link onClick={() => setOpen(false)} href="/">
+            Home
+          </Link>
+          <Link onClick={() => setOpen(false)} href="/about">
+            About
+          </Link>
+          <Link onClick={() => setOpen(false)} href="/programs">
+            Programs
+          </Link>
+          <Link onClick={() => setOpen(false)} href="/gallery">
+            Gallery
+          </Link>
+          <Link onClick={() => setOpen(false)} href="/contact">
+            Contact
+          </Link>
+        </div>
+      )}
     </header>
   );
 }
