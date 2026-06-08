@@ -27,7 +27,7 @@ export default function Navbar() {
           <Link href="/contact">Contact</Link>
         </nav>
 
-        {/* Mobile Button */}
+        {/* Hamburger */}
         <button
           className="md:hidden flex flex-col gap-1"
           onClick={() => setOpen(!open)}
@@ -41,22 +41,28 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {open && (
-        <div className="md:hidden border-t bg-white px-6 py-4 space-y-4">
-          <Link onClick={() => setOpen(false)} href="/">
-            Home
-          </Link>
-          <Link onClick={() => setOpen(false)} href="/about">
-            About
-          </Link>
-          <Link onClick={() => setOpen(false)} href="/programs">
-            Programs
-          </Link>
-          <Link onClick={() => setOpen(false)} href="/gallery">
-            Gallery
-          </Link>
-          <Link onClick={() => setOpen(false)} href="/contact">
-            Contact
-          </Link>
+        <div className="md:hidden border-t bg-white px-6 py-4">
+          <nav className="flex flex-col gap-4 text-gray-700 font-medium">
+            <Link onClick={() => setOpen(false)} href="/" className="block">
+              Home
+            </Link>
+
+            <Link onClick={() => setOpen(false)} href="/about" className="block">
+              About
+            </Link>
+
+            <Link onClick={() => setOpen(false)} href="/programs" className="block">
+              Programs
+            </Link>
+
+            <Link onClick={() => setOpen(false)} href="/gallery" className="block">
+              Gallery
+            </Link>
+
+            <Link onClick={() => setOpen(false)} href="/contact" className="block">
+              Contact
+            </Link>
+          </nav>
         </div>
       )}
     </header>
