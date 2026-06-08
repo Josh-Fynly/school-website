@@ -1,8 +1,12 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    unoptimized: true,
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 60,
   },
-}
 
-module.exports = nextConfig
+  reactStrictMode: true,
+
+  poweredByHeader: false,
+};
+
+module.exports = nextConfig;
