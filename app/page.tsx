@@ -2,6 +2,7 @@ import Link from "next/link";
 import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
 import { school } from "@/lib/school";
+import { design } from "@/lib/design";
 
 export default function Home() {
   return (
@@ -10,7 +11,7 @@ export default function Home() {
       <Section className="pt-24 pb-28">
         <Container>
           <div className="max-w-4xl mx-auto text-center">
-            <p className="text-[#D81B60] font-medium mb-6 tracking-wide uppercase text-sm">
+            <p className="text-[#D81B60] font-medium mb-6 tracking-widest uppercase text-xs">
               Early Childhood Excellence
             </p>
 
@@ -25,14 +26,14 @@ export default function Home() {
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/contact"
-                className="bg-[#D81B60] hover:opacity-90 transition text-white px-8 py-4 rounded-2xl font-medium"
+                className={design.button.primary}
               >
                 Enroll Your Child
               </Link>
 
               <Link
                 href="/about"
-                className="border border-gray-300 hover:border-gray-400 transition px-8 py-4 rounded-2xl font-medium"
+                className={design.button.secondary}
               >
                 Learn More
               </Link>
@@ -58,7 +59,7 @@ export default function Home() {
             {school.programs.map((p, i) => (
               <div
                 key={i}
-                className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-md transition duration-300"
+                className="rounded-3xl p-8 bg-white border border-gray-100 shadow-sm hover:shadow-md transition duration-300"
               >
                 <h3 className="text-2xl font-semibold mb-4">
                   {p.title}
@@ -76,8 +77,8 @@ export default function Home() {
       {/* WHY US */}
       <Section className="py-24">
         <Container>
-          <div className="max-w-3xl">
-            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-10">
+          <div className="max-w-3xl mb-10">
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight">
               Why parents choose us
             </h2>
           </div>
@@ -86,7 +87,7 @@ export default function Home() {
             {school.features.map((f, i) => (
               <div
                 key={i}
-                className="border border-gray-100 rounded-2xl p-6 bg-white"
+                className="rounded-2xl border border-gray-100 bg-white p-6 hover:border-gray-200 transition"
               >
                 <p className="text-lg text-gray-700">
                   ✓ {f}
@@ -100,19 +101,19 @@ export default function Home() {
       {/* CTA */}
       <Section className="py-24">
         <Container>
-          <div className="bg-[#D81B60] text-white rounded-[2rem] px-8 py-16 text-center">
+          <div className="bg-[#D81B60] text-white rounded-[2rem] px-8 py-16 text-center shadow-lg">
             <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-6">
               Give your child the best start
             </h2>
 
             <p className="text-white/90 max-w-2xl mx-auto text-lg mb-10">
-              Join a nurturing learning environment focused on excellence,
-              growth, and character development.
+              Join a nurturing environment focused on excellence, growth,
+              and character development.
             </p>
 
             <Link
               href="/contact"
-              className="bg-white text-[#D81B60] px-8 py-4 rounded-2xl font-semibold inline-block hover:scale-[1.02] transition"
+              className="bg-white text-[#D81B60] px-8 py-4 rounded-2xl font-semibold inline-block hover:scale-[1.02] active:scale-[0.98] transition"
             >
               Start Enrollment
             </Link>
