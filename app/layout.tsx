@@ -3,12 +3,9 @@ import "./globals.css";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import StructuredData from "./StructuredData";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
-
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
@@ -17,6 +14,8 @@ export const metadata: Metadata = {
   description: siteConfig.description,
 
   keywords: siteConfig.keywords,
+
+  metadataBase: new URL(siteConfig.url),
 
   openGraph: {
     title: siteConfig.name,
@@ -39,7 +38,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
-    images: ["/opengraph-image"],
   },
 
   robots: {
@@ -56,14 +54,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-white text-gray-900 antialiased">
-        {/* Structured Data (SEO JSON-LD) */}
-        <StructuredData />
-
-        {/* Global Layout */}
         <Navbar />
-
         <main>{children}</main>
-
         <Footer />
       </body>
     </html>
